@@ -109,6 +109,7 @@ public class EntityRule {
 
     //    ManyToOne은 N:1관계임을 명시
     //    Member.getTeam은 가능하지만 반대가 불가능 할경우 단방향
+    //    ~~ToOne의 경우 fetch = FetchType.LAZY를 적용해야 성능 개선하기 편하다
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ENTITY_N1_ID")
     private EntityN1 entityN1;
@@ -120,7 +121,7 @@ public class EntityRule {
     private Entity11 entity11;
 
     // 억지 양방향(1:N 비추천)
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ENTITY_1N_ID", insertable = false, updatable = false)
     private Entity1N entity1N;
 
